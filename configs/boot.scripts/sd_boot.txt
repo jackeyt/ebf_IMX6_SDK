@@ -1,0 +1,5 @@
+setenv mmcargs 'setenv bootargs console=${console},${baudrate} root=${mmcroot}' 
+run mmcargs 
+run loadimage 
+run loadfdt 
+bootz ${loadaddr}-${fdt_addr}

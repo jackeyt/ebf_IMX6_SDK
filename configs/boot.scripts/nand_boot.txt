@@ -1,0 +1,7 @@
+setenv mmcargs 'setenv bootargs console=${console},${baudrate} root=/dev/ram0 rw initrd= 0x83800000,16M fstype=ext4 quiet mtdparts=gpmi-nand:64m(boot),16m(kernel),16m(dtb),-(rootfs) mem=256m update_nand'
+run mmcargs 
+fatload mmc 0 0x80800000 zlmage 
+fatload mmc 0 0x83000000 zlmage-imx6ull-14x14-evk-gpmi-weim-update.dtb 
+fatload mmc 0 0x83800000 
+rootfs.cpio.gz 
+bootz 0x80800000-0x83000000
